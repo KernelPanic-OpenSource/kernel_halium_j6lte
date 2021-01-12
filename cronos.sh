@@ -19,8 +19,8 @@
 # Main Dir
 CR_DIR=$(pwd)
 # Define toolchan path
-CR_TC_64=$CR_DIR/Helios/gcc/aarch64-linux-android-4.9/bin/aarch64-linux-android-
-CR_TC_32=$CR_DIR/Helios/gcc/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
+CR_TC=$CR_DIR/Helios/gcc/gcc-linaro-7.4.1/bin/aarch64-linux-gnu-
+# CR_TC_32=$CR_DIR/Helios/gcc/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
 # Define proper arch and dir for dts files
 CR_DTS=arch/arm64/boot/dts
 # Define boot.img out dir
@@ -38,7 +38,7 @@ CR_DTB=$CR_DIR/boot.img-dtb
 CR_VERSION=V4.0
 CR_NAME=HeliosPie_Treble
 # Thread count
-CR_JOBS=5
+CR_JOBS=-j$(nproc --all)
 # Target android version and platform (7/n/8/o/9/p)
 CR_ANDROID=p
 CR_PLATFORM=9.0.0
@@ -47,7 +47,7 @@ CR_ARCH=arm64
 # Current Date
 CR_DATE=$(date +%Y%m%d)
 # Init build
-export CROSS_COMPILE=$CR_TC_64
+export CROSS_COMPILE=$CR_TC
 export CROSS_COMPILE_ARM32=$CR_TC_32
 export ARCH=arm64
 export SUBARCH=arm64
