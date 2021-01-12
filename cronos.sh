@@ -37,8 +37,6 @@ CR_DTB=$CR_DIR/boot.img-dtb
 # Kernel Name and Version
 CR_VERSION=V4.0
 CR_NAME=HeliosPie_Treble
-# Thread count
-CR_JOBS=-j$(nproc --all)
 # Target android version and platform (7/n/8/o/9/p)
 CR_ANDROID=p
 CR_PLATFORM=9.0.0
@@ -116,7 +114,7 @@ BUILD_ZIMAGE()
 	echo "Building zImage for $CR_VARIANT"
 	export LOCALVERSION=-$CR_NAME-$CR_VERSION-$CR_VARIANT-$CR_DATE
 	make  $CR_CONFG
-	make -j$CR_JOBS
+	make -j$(nproc --all)
 	if [ ! -e $CR_KERNEL ]; then
 	exit 0;
 	echo "Image Failed to Compile"
